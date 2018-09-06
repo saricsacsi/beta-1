@@ -1,1 +1,1 @@
-# beta
+# beta testing tokens
