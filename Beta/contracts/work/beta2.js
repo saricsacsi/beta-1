@@ -27,7 +27,7 @@ function getOwnerOfWallet(web3, address, abi, callback) {
           
        
     try {
-        BetaWalletContract.methods._owner().call((res, error) => {
+        BetaWalletContract.methods._owner().call((error, res) => {
             if (!error) {
                 callback(res, 0);   
             }
@@ -57,7 +57,7 @@ function getAdminrOfWallet(web3, address, abi, callback) {
           
        
     try {
-       BetaWalletContract.methods.admin().call((res, error) =>  {
+       BetaWalletContract.methods.admin().call((error, res) =>  {
             if (!error) {
                 callback(res, 0);   
             }
@@ -92,7 +92,7 @@ function getPendingTransactions(web3, address, abi, callback) {
         // initiate contract for an address
     
             try {
-                BetaWalletContract.methods.getPendingTransactions().call((res,error) => {
+                BetaWalletContract.methods.getPendingTransactions().call((error, res) => {
                     if (!error) {
                         callback(res, 0);   
                     }
@@ -123,7 +123,7 @@ function walletBalance(web3, address, abi, callback) {
     const BetaWalletContract =  new web3.eth.Contract(abi, address);
 
             try {
-                BetaWalletContract.methods.walletBalance().call((res,error) => {
+                BetaWalletContract.methods.walletBalance().call((error, res) => {
                     if (!error) {
                         var balance = web3.fromWei(res, 'ether');
                         callback(balance, 0);   
@@ -154,7 +154,7 @@ function BalanceOfToken(web3, address, abi, callback) {
     const BetaWalletContract =  new web3.eth.Contract(abi, address);
 
             try {
-                BetaWalletContract.methods.walletBalanceOfToken().call((res,error) => {
+                BetaWalletContract.methods.walletBalanceOfToken().call((error, res) => {
                     if (!error) {
                         var balance = web3.fromWei(res, 'ether');
                         callback(balance, 0);   
@@ -188,7 +188,7 @@ function check_permitting(web3, address, abi, who, transactionId, callback) {
           // initiate contract for an address
     
             try {
-                 BetaWalletContract.methods.check_permitting(who, transactionId).call((res,error) => {
+                 BetaWalletContract.methods.check_permitting(who, transactionId).call((error, res) => {
                      if (!error) {
                          callback(res, 0);   
                       }
@@ -221,7 +221,7 @@ function transferToToken(web3, address, abi, beneficiary, amount, type,  callbac
     const BetaWalletContract =  new web3.eth.Contract(abi, address, {from: web3.eth.defaultAccount});
 
             try {
-                BetaWalletContract.methods.transferToToken(beneficiary, amount, type).send((res,error) => {
+                BetaWalletContract.methods.transferToToken(beneficiary, amount, type).send((error, res) => {
                     if (!error) {
                         callback(res, 0);   
                     }
@@ -241,7 +241,7 @@ function signTransaction(web3, address, abi,transactionId, callback) {
                        
     const BetaWalletContract =  new web3.eth.Contract(abi, address);
             try {
-                BetaWalletContract.methods.signTransaction(transactionId).send((res,error) => {
+                BetaWalletContract.methods.signTransaction(transactionId).send((error, res) => {
                     if (!error) {
                          callback(res, 0);   
                     }
@@ -261,7 +261,7 @@ function deletePendingTransaction(web3, address, abi,transactionId, callback) {
                                        
     const BetaWalletContract =  new web3.eth.Contract(abi, address);
                 try {
-                    BetaWalletContract.methods.deletePendingTransaction(transactionId).send((res,error) => {
+                    BetaWalletContract.methods.deletePendingTransaction(transactionId).send((error, res) => {
                      if (!error) {
                             callback(res, 0);   
                      }
@@ -280,7 +280,7 @@ function setNewAdmin(web3, address, abi, newAdmin, callback) {
                                        
     const BetaWalletContract =  new web3.eth.Contract(abi, address);
                 try {
-                    BetaWalletContract.methods.setNewAdmin(newAdmin).send((res,error) => {
+                    BetaWalletContract.methods.setNewAdmin(newAdmin).send((error, res) => {
                      if (!error) {
                             callback(res, 0);   
                      }
@@ -299,7 +299,7 @@ function withdraw_ether(web3, address, abi, callback) {
                                                
     const BetaWalletContract =  new web3.eth.Contract(abi, address);
                 try {
-                    BetaWalletContract.methods.withdraw_ether((res,error) => {
+                    BetaWalletContract.methods.withdraw_ether((error, res) => {
                         if (!error) {
                              callback(res, 0);   
                         }
@@ -320,7 +320,7 @@ function withdraw_token(web3, address, abi, token_amount, callback) {
                                                            
     const BetaWalletContract =  new web3.eth.Contract(abi, address);
                 try {
-                    BetaWalletContract.methods.withdraw_token(token_amount),send((res,error) => {
+                    BetaWalletContract.methods.withdraw_token(token_amount),send((error, res) => {
                         if (!error) {
                              callback(res, 0);   
                           }
