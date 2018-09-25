@@ -1,0 +1,13 @@
+
+/**
+ * Calls a contract function to get the admin of the wallet.
+ *
+ * @method admin().call get the address of the admin
+ * @param web3 creating a web3 connection for the function whenever it is called
+ * @param address address of the contract that we are using
+ * @param abi abi of the contract that we are using
+ * @param {function} If the last argument is a function, the contract function
+ *   call will be asynchronous, and the callback will be passed the
+ *   error and result.
+ * @return {String} the address of the admin
+ */
