@@ -11,7 +11,7 @@ const Web3 = require('web3');
 /**
  * Calls a contract function to get the owner of the wallet.
  *
- * @method owner().call get the address of the owner
+ * @method _owner().call get the address of the owner
  * @param web3 creating a web3 connection for the function whenever it is called
  * @param address address of the contract that we are using
  * @param abi abi of the contract that we are using
@@ -27,7 +27,7 @@ function getOwnerOfWallet(web3, address, abi, callback) {
           
        
     try {
-        BetaWalletContract.methods.admin().call((res, error) => {
+        BetaWalletContract.methods._owner().call((res, error) => {
             if (!error) {
                 callback(res, 0);   
             }
